@@ -28,11 +28,12 @@ public class FSealDomain {
 			// TODO Auto-generated constructor stub
 		}
 
-		public FSealDomain(Long id, String name, Double weight) {
+		public FSealDomain(Long id, String name, Double weight, MSealDomain male) {
 			super();
 			Id = id;
 			this.name = name;
 			this.weight = weight;
+			this.male = male;
 		}
 
 		public Long getId() {

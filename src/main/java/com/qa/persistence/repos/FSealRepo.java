@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.qa.persistence.domain.FSealDomain;
 
-public class FSealRepo extends JpaRepository<FSealDomain, Long>{
+@Repository
+public interface FSealRepo extends JpaRepository<FSealDomain, Long>{
 
 }

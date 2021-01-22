@@ -22,21 +22,23 @@ public class MSealDomain {
 	
 	@NotNull
 	private String name;
+	
+	private Double weight;
 
 	@OneToMany(mappedBy = "male", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<FSealDomain> dogList;
+	private List<FSealDomain> fsealList;
 
 	public MSealDomain() {
 		super();
 		
 	}
 
-	public MSealDomain(Long id, String name, List<FSealDomain> dogList) {
+	public MSealDomain(Long id, String name, List<FSealDomain> fsealList) {
 		super();
 		Id = id;
 		this.name = name;
-		this.dogList = dogList;
+		this.fsealList = fsealList;
 	}
 
 	public Long getId() {
@@ -55,12 +57,21 @@ public class MSealDomain {
 		this.name = name;
 	}
 
-	public List<FSealDomain> getfsealList() {
-		return dogList;
+	public Double getWeight() {
+		return weight;
 	}
 
-	public void setDogList(List<FSealDomain> dogList) {
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public List<FSealDomain> getFsealList() {
+		return fsealList;
+	}
+
+	public void setFsealList(List<FSealDomain> fsealList) {
 		this.fsealList = fsealList;
 	}
+	
 		
 }

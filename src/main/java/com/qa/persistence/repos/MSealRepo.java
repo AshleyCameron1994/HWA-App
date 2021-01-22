@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.qa.persistence.domain.MSealDomain;
 
-public class MSealRepo extends JpaRepository<MSealDomain, Long>{
+@Repository
+public interface MSealRepo extends JpaRepository<MSealDomain, Long>{
 
 }

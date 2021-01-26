@@ -1,5 +1,7 @@
 package com.qa.persistence.dto;
 
+import java.util.List;
+
 public class MSealDTO {
 	
 	private Long Id;
@@ -7,6 +9,8 @@ public class MSealDTO {
 	private String name;
 	
 	private Double weight;
+	
+	private List<FSealDTO> fsealList;
 
 	public MSealDTO() {
 		super();
@@ -44,4 +48,12 @@ public class MSealDTO {
 		this.weight = weight;
 	}
 
+	public List<FSealDTO> getFsealList() {
+		return fsealList;
+	}
+
+	public void setFsealList(List<FSealDTO> fsealList) {
+		this.fsealList = fsealList;
+	}
+	
 }

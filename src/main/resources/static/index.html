@@ -20,10 +20,10 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-success btn-lg" onclick="readAllMSeal()">See all our male elephant seals</button>
+                <button type="button" class="btn btn-success btn-lg" id= "msearch" onclick="readAllMSeal()">See all our male elephant seals</button>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-warning btn-lg" onclick="readAllFSeal()">See all our female elephant seals</button>
+                <button type="button" class="btn btn-warning btn-lg" id= "fsearch" onclick="readAllFSeal()">See all our female elephant seals</button>
             </div>
         </div>
     </div>
@@ -54,6 +54,17 @@
                     </div>
             </div>
         </div>
+
+        <br> 
+
+        <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success btn-lg" onclick="readOneMSeal()">Search</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-warning btn-lg" onclick="readOneFSeal()">Search</button>
+                </div>
+            </div>
     </div>
     
     <br>
@@ -136,7 +147,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-success btn-lg" onclick=createMSeal()">Create elephant seal!</button>
+                    <button type="button" class="btn btn-success btn-lg" onclick="createMSeal()">Create elephant seal!</button>
                 </div>
                 <div class="col">
                     <button type="button" class="btn btn-warning btn-lg" onclick="createFSeal()">Create elephant seal!</button>
@@ -163,7 +174,7 @@
                 <div class="col">
                     <div class="input-group input-group-lg">
                     <input
-                        id="msealName"
+                        id="msealName2"
                         type="text"
                         class="form-control"
                         placeholder="Enter your seal's name: "
@@ -173,7 +184,7 @@
                 <div class="col">
                     <div class="input-group input-group-lg">
                         <input
-                        id="fsealName"
+                        id="fsealName2"
                         type="text"
                         class="form-control"
                         placeholder="Enter your seal's name: "
@@ -185,7 +196,7 @@
                 <div class="col">
                     <div class="input-group input-group-lg">
                         <input
-                        id="msealWeight"
+                        id="msealWeight2"
                         type="text"
                         class="form-control"
                         placeholder="Enter your seal's weight: "
@@ -195,7 +206,7 @@
                 <div class="col">
                     <div class="input-group input-group-lg">
                         <input
-                            id="fsealWeight"
+                            id="fsealWeight2"
                             type="text"
                             class="form-control"
                             placeholder="Enter your seal's weight: "
@@ -217,7 +228,7 @@
                 <div class="col">
                     <div class="input-group input-group-lg">
                         <input
-                        id="fsealM_Id"
+                        id="fsealM_Id2"
                         type="text"
                         class="form-control"
                         placeholder="Enter your female seal's male partner: "
@@ -245,10 +256,50 @@
         
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-success btn-lg" onclick=createMSeal()">Update</button>
+                    <button type="button" class="btn btn-success btn-lg" onclick="updateMSeal()">Update</button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-warning btn-lg" onclick="createFSeal()">Update</button>
+                    <button type="button" class="btn btn-warning btn-lg" onclick="updateFSeal()">Update</button>
+                </div>
+            </div>
+
+            <br>
+
+            <h2 class="text-center">
+                Delete a seal by ID
+            </h2>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-lg">
+                        <input
+                            id="msealDelete"
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter your male seal's Id: "
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group input-group-lg">
+                        <input
+                            id="fsealDelete"
+                            type="text"
+                            class="form-control"
+                            placeholder="Enter your female seal's Id: "
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+                    
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success btn-lg" onclick="deleteMSeal()">Delete</button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-warning btn-lg" onclick="deleteFSeal()">Delete</button>
                 </div>
             </div>
         </div>

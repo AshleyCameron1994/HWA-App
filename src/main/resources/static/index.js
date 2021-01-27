@@ -7,20 +7,15 @@ const FS_ID = document.querySelector('#fs_Id');
 const MSealWeight = document.querySelector(`#msealWeight`);
 const FSealWeight = document.querySelector(`#fsealWeight`);
 const FSealM_ID = document.querySelector(`#fsealM_id`);
+const MSealName2 = document.querySelector('#msealName2');
+const FSealName2 = document.querySelector('#fsealName2');
+const MSealWeight2 = document.querySelector(`#msealWeight2`);
+const FSealWeight2 = document.querySelector(`#fsealWeight2`);
+const FSealM_ID2 = document.querySelector(`#fsealM_id2`);
 const MU_ID = document.querySelector('MUpdate_Id');
 const FU_ID = document.querySelector('#FUpdate_Id');
-
-
-MGETURL = "http://localhost:8081/mseal/readAll";
-FGETURL = "http://localhost:8081/fseal/readAll";
-MGETONEL = "http://localhost:8081/mseal/read/";
-FGETONEURL = "http://localhost:8081/fseal/read/";
-MPOSTURL = "http://localhost:8081/mseal/create";
-FPOSTURL = "http://localhost:8081/fseal/create";
-MDELETEURL = "http://localhost:8081/mseal/delete/";
-FDELETEURL = "http://localhost:8081/fseal/delete/";
-MPUTURL = "http://localhost:8081/mseal/update/";
-FPUTURL = "http://localhost:8081/fseal/update/";
+const MSealDelete = document.querySelector('#msealDelete');
+const FSealDelete = document.querySelector('#fsealDelete');
 
 const getMID = () => {
     return [Number.parseFloat(MS_ID.value)];
@@ -30,7 +25,8 @@ const getFID = () => {
 }
 
 const readOneMSeal = () => {
-    fetch(MGETONEURL + MS_ID.value, {
+    fetch(`http://localhost:8081/mseal/read/${MS_ID.value}`, {
+        mode: 'no-cors',
         method: `GET`,
         headers: {
             "accept": "application/json",
@@ -43,7 +39,8 @@ const readOneMSeal = () => {
 };
 
 const readOneFSeal = () => {
-    fetch(FGETONEURL + FS_ID.value, {
+    fetch(`http://localhost:8081/fseal/read/${FS_ID.value}`, {
+        mode: 'no-cors',
         method: `GET`,
         headers: {
             "accept": "application/json",
@@ -66,7 +63,8 @@ const findF = () => {
 }
 
 const readAllMSeal=() => {
-    fetch(MGETURL, {
+    fetch("http://localhost:8081/mseal/readAll", {
+        mode: 'no-cors',
         method: 'GET',
         })
             .then((response) => {
@@ -82,7 +80,8 @@ const readAllMSeal=() => {
 }
 
 const readAllFSeal=() => {
-    fetch(FGETURL, {
+    fetch("http://localhost:8081/fseal/readAll", {
+        mode: 'no-cors',    
         method: 'GET',
         })
             .then((response) => {
@@ -99,29 +98,33 @@ const readAllFSeal=() => {
 
  
 const createMSeal= () => {
-    fetch(MPOSTURL, {
-        method: 'POST',
+    fetch("http://localhost:8081/mseal/create", {
+      mode: 'no-cors',  
+      method: 'POST',
         body: JSON.stringify({
-                "name": MSealName.value,
-                "weight": MSealWeight.value
+              "fsealList": [],
+              "name": MSealName.value,
+              "weight": MSealWeight.value
               }),
-              headers: {
+              headers : {
                   "Content-Type": "application/json"
               }
         })
             .then((response) => response.json())
             .then((json) => console.log(json))
             .catch((err => console.error("Error please stop what you're doing")))
-    
 }
 
 const createFSeal = () => {
-    fetch(MPOSTURL, {
+    fetch("http://localhost:8081/fseal/create", {
+        mode: 'no-cors',  
         method: 'POST',
         body: JSON.stringify({
-                "name": FSealName.value,
-                "weight": MSealWeight.value,
-                "male_id": FSealM_ID.value
+          "male": {
+            "id": FSealM_ID,
+          },
+          "name": FSealName.value,
+          "weight": FSealWeight.value
               }),
               headers: {
                   "Content-Type": "application/json"
@@ -132,16 +135,15 @@ const createFSeal = () => {
             .catch((err => console.error("Error please stop what you're doing")))
     
 }
-// const id = document.querySelector(`#id`);
-// const name = document.querySelector(`#name`);
-// const status = document.querySelector(`#status`);
 
 let updateMSeal = () => {
-  fetch(MPUTURL + MU_ID.value, {
+  fetch(`http://localhost:8081/mseal/update/${MU_ID.value}`, {
+    mode: 'no-cors',
     method: `POST`,
     body: JSON.stringify({
-      "name": name.value,
-      status: status.value,
+      "fsealList": [],
+      "name": MSealName2.value,
+      "weight": MSealWeight2.value
     }),
     headers: {
       accept: "application/json",
@@ -154,11 +156,15 @@ let updateMSeal = () => {
 };
 
 let updateFSeal = () => {
-    fetch(FPUTURL + FU_ID.value, {
+    fetch(`http://localhost:8081/fseal/update/${FU_ID.value}`, {
+      mode: 'no-cors',
       method: `POST`,
       body: JSON.stringify({
-        name: name.value,
-        status: status.value,
+        "male": {
+          "id": FSealM_ID2
+        },
+        "name": FSealName2.value,
+        "weight": FSealWeight2.value,
       }),
       headers: {
         accept: "application/json",
@@ -170,10 +176,11 @@ let updateFSeal = () => {
       .catch((err) => console.error(`Stop! ${err}`));
   };
 let deleteMSeal = () => {
-  fetch(MDELETEURL + , {
+  fetch(`http://localhost:8081/fseal/delete/${MSealDelete.value}`, {
+    mode: 'no-cors',
     method: `DELETE`,
     body: JSON.stringify({
-      id: 1,
+      id: MSealDelete.value,
     }),
     headers: {
       accept: "application/json",
@@ -186,10 +193,11 @@ let deleteMSeal = () => {
 };
 
 let deleteFSeal = () => {
-    fetch(FDELETEURL + , {
+    fetch(`http://localhost:8081/fseal/delete/${FSealDelete.value}`, {
+      mode: 'no-cors',
       method: `DELETE`,
       body: JSON.stringify({
-        id: 1,
+        id: FSealDelete.value,
       }),
       headers: {
         accept: "application/json",

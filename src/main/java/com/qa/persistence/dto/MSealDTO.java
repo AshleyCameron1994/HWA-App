@@ -1,5 +1,7 @@
 package com.qa.persistence.dto;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MSealDTO {
@@ -10,19 +12,27 @@ public class MSealDTO {
 	
 	private Double weight;
 	
-	private List<FSealDTO> fsealList;
+	private List<FSealDTO> fsealList = new ArrayList<>();
+
+	public MSealDTO(Long id, String name, Double weight, List<FSealDTO> fsealList) {
+		super();
+		Id = id;
+		this.name = name;
+		this.weight = weight;
+		this.fsealList = fsealList;
+	}
 
 	public MSealDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public MSealDTO(Long id, String name, Double weight) {
-		super();
-		Id = id;
-		this.name = name;
-		this.weight = weight;
-	}
+//
+//	public MSealDTO(Long id, String name, Double weight) {
+//		super();
+//		Id = id;
+//		this.name = name;
+//		this.weight = weight;
+//	}
 
 	public Long getId() {
 		return Id;

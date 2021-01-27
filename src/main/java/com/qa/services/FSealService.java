@@ -43,7 +43,7 @@ public class FSealService {
 		
 		return fsealListDTO;
 	}
-	//read one fseal from list
+	//read one female seal from list
 	public FSealDTO readOne(Long id) {
 		return this.maptoDTO(this.repo.findById(id).orElseThrow());
 	}

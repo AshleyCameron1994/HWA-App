@@ -1,5 +1,6 @@
 package com.qa.persistence.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -27,18 +28,18 @@ public class MSealDomain {
 
 	@OneToMany(mappedBy = "male", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<FSealDomain> fsealList;
+	private List<FSealDomain> fsealList = new ArrayList<>();
 
 	public MSealDomain() {
 		super();
 		
 	}
 
-	public MSealDomain(Long id, String name, List<FSealDomain> fsealList) {
+	public MSealDomain(Long id, String name) {
 		super();
 		Id = id;
 		this.name = name;
-		this.fsealList = fsealList;
+//		this.fsealList = fsealList;
 	}
 
 	public Long getId() {
@@ -65,13 +66,13 @@ public class MSealDomain {
 		this.weight = weight;
 	}
 
-	public List<FSealDomain> getFsealList() {
-		return fsealList;
-	}
-
-	public void setFsealList(List<FSealDomain> fsealList) {
-		this.fsealList = fsealList;
-	}
+//	public List<FSealDomain> getFsealList() {
+//		return fsealList;
+//	}
+//
+//	public void setFsealList(List<FSealDomain> fsealList) {
+//		this.fsealList = fsealList;
+//	}
 	
 		
 }

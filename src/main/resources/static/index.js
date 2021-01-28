@@ -198,7 +198,7 @@ let deleteFSeal = () => {
         accept: "application/json"
       },
     })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
+      .then((response) => response.text())
+      .then((json) => console.log(text))
       .catch((err) => console.error("Error please stop what you're doing"));
   };

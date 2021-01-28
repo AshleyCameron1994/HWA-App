@@ -35,11 +35,12 @@ public class MSealDomain {
 		
 	}
 
-	public MSealDomain(Long id, String name) {
+	public MSealDomain(Long id, String name, Double weight, List<FSealDomain> fsealList) {
 		super();
 		Id = id;
 		this.name = name;
-//		this.fsealList = fsealList;
+		this.weight = weight;
+		this.fsealList = fsealList;
 	}
 
 	public Long getId() {
@@ -66,13 +67,13 @@ public class MSealDomain {
 		this.weight = weight;
 	}
 
-//	public List<FSealDomain> getFsealList() {
-//		return fsealList;
-//	}
-//
-//	public void setFsealList(List<FSealDomain> fsealList) {
-//		this.fsealList = fsealList;
-//	}
+	public List<FSealDomain> getFsealList() {
+		return fsealList;
+	}
+
+	public void setFsealList(List<FSealDomain> fsealList) {
+		this.fsealList = fsealList;
+	}
 	
 		
 }

@@ -7,6 +7,8 @@ const FS_ID = document.querySelector('#fs_Id');
 const MSealWeight = document.querySelector(`#msealWeight`);
 const FSealWeight = document.querySelector(`#fsealWeight`);
 const FSealM_ID = document.querySelector(`#fsealM_id`);
+const FSealM_Name = document.querySelector(`#fsealM_name`);
+const FSealM_Weight = document.querySelector(`#fsealM_weight`);
 const MSealName2 = document.querySelector('#msealName2');
 const FSealName2 = document.querySelector('#fsealName2');
 const MSealWeight2 = document.querySelector(`#msealWeight2`);
@@ -98,13 +100,13 @@ const readAllFSeal=() => {
 
  
 const createMSeal= () => {
-    fetch("http://localhost:8081/mseal/create", {
-      mode: 'no-cors',  
+    fetch("http://localhost:8081/mseal/create", { 
       method: 'POST',
         body: JSON.stringify({
-              "fsealList": [],
-              "name": MSealName.value,
-              "weight": MSealWeight.value
+          "fsealList": [
+          ],
+          "name": MSealName.value,
+          "weight": MSealWeight.value
               }),
               headers : {
                   "Content-Type": "application/json"
@@ -116,15 +118,19 @@ const createMSeal= () => {
 }
 
 const createFSeal = () => {
-    fetch("http://localhost:8081/fseal/create", {
-        mode: 'no-cors',  
+    fetch("http://localhost:8081/fseal/create", {  
         method: 'POST',
         body: JSON.stringify({
           "male": {
-            "id": FSealM_ID,
+            "fsealList": [
+              null
+            ],
+            "id": FSealM_ID.value,
+            "name": FSealM_Name,
+            "weight": FSealM_Weight
           },
-          "name": FSealName.value,
-          "weight": FSealWeight.value
+            "name": FSealName.value,
+            "weight": FSealWeight.value
               }),
               headers: {
                   "Content-Type": "application/json"

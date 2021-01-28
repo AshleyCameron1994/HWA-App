@@ -6,7 +6,7 @@ const MS_ID = document.querySelector('#ms_Id');
 const FS_ID = document.querySelector('#fs_Id');
 const MSealWeight = document.querySelector(`#msealWeight`);
 const FSealWeight = document.querySelector(`#fsealWeight`);
-const FSealM_ID = document.querySelector(`#fsealM_id`);
+const FSealM_ID = document.querySelector(`#fsealM_Id`);
 const FSealM_Name = document.querySelector(`#fsealM_name`);
 const FSealM_Weight = document.querySelector(`#fsealM_weight`);
 const MSealName2 = document.querySelector('#msealName2');
@@ -125,9 +125,7 @@ const createFSeal = () => {
             "fsealList": [
               null
             ],
-            "id": FSealM_ID.value,
-            "name": FSealM_Name,
-            "weight": FSealM_Weight
+            "id": FSealM_ID.value
           },
             "name": FSealName.value,
             "weight": FSealWeight.value
@@ -158,7 +156,7 @@ let updateMSeal = () => {
   })
     .then((response) => response.json())
     .then((json) => console.log(json))
-    .catch((err) => console.error(`Stop! ${err}`));
+    .catch((err) => console.error("Error please stop what you're doing"));
 };
 
 let updateFSeal = () => {
@@ -179,38 +177,28 @@ let updateFSeal = () => {
     })
       .then((response) => response.json())
       .then((json) => console.log(json))
-      .catch((err) => console.error(`Stop! ${err}`));
+      .catch((err) => console.error("Error please stop what you're doing"));
   };
 let deleteMSeal = () => {
   fetch("http://localhost:8081/fseal/delete/" + MSealDelete.value, {
-    mode: 'no-cors',
     method: `DELETE`,
-    body: JSON.stringify({
-      id: MSealDelete.value,
-    }),
     headers: {
-      accept: "application/json",
-      api_key: 1,
+      accept: "application/json"
     },
   })
     .then((response) => response.json())
     .then((json) => console.log(json))
-    .catch((err) => console.error(`Stop! ${err}`));
+    .catch((err) => console.error("Error please stop what you're doing"));
 };
 
 let deleteFSeal = () => {
     fetch("http://localhost:8081/fseal/delete/" + FSealDelete.value, {
-      mode: 'no-cors',
       method: `DELETE`,
-      body: JSON.stringify({
-        id: FSealDelete.value,
-      }),
       headers: {
-        accept: "application/json",
-        api_key: 1,
+        accept: "application/json"
       },
     })
       .then((response) => response.json())
       .then((json) => console.log(json))
-      .catch((err) => console.error(`Stop! ${err}`));
+      .catch((err) => console.error("Error please stop what you're doing"));
   };

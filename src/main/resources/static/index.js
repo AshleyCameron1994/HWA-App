@@ -143,7 +143,7 @@ const createFSeal = () => {
 }
 
 let updateMSeal = () => {
-  fetch(`http://localhost:8081/mseal/update/${MU_ID.value}`, {
+  fetch("http://localhost:8081/mseal/update/" + MU_ID.value, {
     mode: 'no-cors',
     method: `POST`,
     body: JSON.stringify({
@@ -162,7 +162,7 @@ let updateMSeal = () => {
 };
 
 let updateFSeal = () => {
-    fetch(`http://localhost:8081/fseal/update/${FU_ID.value}`, {
+    fetch("http://localhost:8081/fseal/update/" + FU_ID.value, {
       mode: 'no-cors',
       method: `POST`,
       body: JSON.stringify({
@@ -182,7 +182,7 @@ let updateFSeal = () => {
       .catch((err) => console.error(`Stop! ${err}`));
   };
 let deleteMSeal = () => {
-  fetch(`http://localhost:8081/fseal/delete/${MSealDelete.value}`, {
+  fetch("http://localhost:8081/fseal/delete/" + MSealDelete.value, {
     mode: 'no-cors',
     method: `DELETE`,
     body: JSON.stringify({
@@ -199,7 +199,7 @@ let deleteMSeal = () => {
 };
 
 let deleteFSeal = () => {
-    fetch(`http://localhost:8081/fseal/delete/${FSealDelete.value}`, {
+    fetch("http://localhost:8081/fseal/delete/" + FSealDelete.value, {
       mode: 'no-cors',
       method: `DELETE`,
       body: JSON.stringify({

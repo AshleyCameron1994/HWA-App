@@ -10,7 +10,6 @@ public class FSealDTO {
 
 	public FSealDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public FSealDTO(Long id, String name, Double weight) {

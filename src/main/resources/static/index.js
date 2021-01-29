@@ -13,8 +13,8 @@ const MSealName2 = document.querySelector('#msealName2');
 const FSealName2 = document.querySelector('#fsealName2');
 const MSealWeight2 = document.querySelector(`#msealWeight2`);
 const FSealWeight2 = document.querySelector(`#fsealWeight2`);
-const FSealM_ID2 = document.querySelector(`#fsealM_id2`);
-const MU_ID = document.querySelector('MUpdate_Id');
+const FSealM_ID2 = document.querySelector(`#fsealM_Id2`);
+const MU_ID = document.querySelector('#MUpdate_Id');
 const FU_ID = document.querySelector('#FUpdate_Id');
 const MSealDelete = document.querySelector('#msealDelete');
 const FSealDelete = document.querySelector('#fsealDelete');
@@ -142,37 +142,38 @@ const createFSeal = () => {
 
 let updateMSeal = () => {
   fetch("http://localhost:8081/mseal/update/" + MU_ID.value, {
-    mode: 'no-cors',
-    method: `POST`,
+    method: `PUT`,
     body: JSON.stringify({
-      "fsealList": [],
+      "fsealList": [
+      ],
       "name": MSealName2.value,
       "weight": MSealWeight2.value
+    
     }),
     headers: {
-      accept: "application/json",
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
     },
   })
     .then((response) => response.json())
-    .then((json) => console.log(json))
+    .then((json) => console.log("Success", json))
     .catch((err) => console.error("Error please stop what you're doing"));
 };
 
 let updateFSeal = () => {
     fetch("http://localhost:8081/fseal/update/" + FU_ID.value, {
-      mode: 'no-cors',
-      method: `POST`,
+      method: `PUT`,
       body: JSON.stringify({
         "male": {
-          "id": FSealM_ID2
+          "fsealList": [
+            null
+          ],
+          "id": FSealM_ID2.value
         },
-        "name": FSealName2.value,
-        "weight": FSealWeight2.value,
+          "name": FSealName2.value,
+          "weight": FSealWeight2.value
       }),
       headers: {
-        accept: "application/json",
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type":  "application/json",
       },
     })
       .then((response) => response.json())
@@ -186,8 +187,6 @@ let deleteMSeal = () => {
       accept: "application/json"
     },
   })
-    /* .then((response) => response.text())
-    .catch((err) => console.error("Error please stop what you're doing")); */
 };
 
 let deleteFSeal = () => {
@@ -197,6 +196,4 @@ let deleteFSeal = () => {
         accept: "application/json"
       }
     })
-      /* .then((response) => response.text())
-      .catch((err) => console.error("Error please stop what you're doing")); */
 };

@@ -180,15 +180,14 @@ let updateFSeal = () => {
       .catch((err) => console.error("Error please stop what you're doing"));
   };
 let deleteMSeal = () => {
-  fetch("http://localhost:8081/fseal/delete/" + MSealDelete.value, {
+  fetch("http://localhost:8081/mseal/delete/" + MSealDelete.value, {
     method: `DELETE`,
     headers: {
       accept: "application/json"
     },
   })
-    .then((response) => response.json())
-    .then((json) => console.log(json))
-    .catch((err) => console.error("Error please stop what you're doing"));
+    /* .then((response) => response.text())
+    .catch((err) => console.error("Error please stop what you're doing")); */
 };
 
 let deleteFSeal = () => {
@@ -196,9 +195,8 @@ let deleteFSeal = () => {
       method: `DELETE`,
       headers: {
         accept: "application/json"
-      },
+      }
     })
-      .then((response) => response.text())
-      .then((json) => console.log(text))
-      .catch((err) => console.error("Error please stop what you're doing"));
-  };
+      /* .then((response) => response.text())
+      .catch((err) => console.error("Error please stop what you're doing")); */
+};

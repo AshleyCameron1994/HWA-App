@@ -42,6 +42,13 @@ public class FSealDomain {
 			this.name = name;
 			this.weight = weight;
 		}
+		
+
+		public FSealDomain(@NotNull String name, @NotNull Double weight) {
+			super();
+			this.name = name;
+			this.weight = weight;
+		}
 
 		public Long getId() {
 			return Id;

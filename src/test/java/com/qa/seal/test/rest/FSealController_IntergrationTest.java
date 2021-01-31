@@ -52,6 +52,7 @@ class FSealControllerIntegrationTest {
 	}
 	
 	private final int TEST_ID = 1;
+	private final FSealDomain TEST_FSEAL_FROM_DB = new FSealDomain(1L, "Salty", 245D);
 
 //	@Test
 //	void testReadOneFSeal() throws Exception {
@@ -74,14 +75,14 @@ class FSealControllerIntegrationTest {
 	@Test
 	void testCreateFSeal() throws Exception {
 		
-		final FSealDomain NEW_FSeal = new FSealDomain(10L, "Savage", 300D);
+		final FSealDomain NEW_FSeal = new FSealDomain("Savage", 300D);
 		
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/FSeal/createFSeal");
 		mockRequest.contentType(MediaType.APPLICATION_JSON);
 		mockRequest.content(this.mapper.writeValueAsString(NEW_FSeal));
 		mockRequest.accept(MediaType.APPLICATION_JSON);
 
-		final FSealDomain SAVED_FSeal = new FSealDomain(2L, NEW_FSeal.getName(), NEW_FSeal.getWeight());
+		final FSealDomain SAVED_FSeal = new FSealDomain(3L, NEW_FSeal.getName(), NEW_FSeal.getWeight());
 
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isCreated();
 		ResultMatcher matchContent = MockMvcResultMatchers.content()
@@ -89,36 +90,35 @@ class FSealControllerIntegrationTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
-//	@Test
-//	void testDeleteFSeal() throws Exception {
-//		this.mock.perform(request(HttpMethod.DELETE, "/FSeal/deleteFSeal/" + this.TEST_FSEAL_FROM_DB.getId()))
-//				.andExpect(status().isNoContent());
-//	}
-//
-//	@Test
-//	void testGetAllFSeals() throws Exception {
-//		List<FSealDTO> FSealList = new ArrayList<>();
-//		FSealList.add(this.mapToDTO(TEST_FSEAL_FROM_DB));
-//
-//		String content = this.mock.perform(request(HttpMethod.GET, "/FSeal/getAll").accept(MediaType.APPLICATION_JSON))
-//				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-//
-//		assertEquals(this.mapper.writeValueAsString(FSealList), content);
-//	}
-//
-//	@Test
-//	void testUpdateFSeal() throws Exception {
-//		FSealDTO newFSeal = new FSealDTO(null, "Sir FSealington esq.", "Blue", "FSealington Manor");
-//		FSeal updatedFSeal = new FSeal(this.TEST_FSeal_FROM_DB.getId(), newFSeal.getName(), newFSeal.getColour(),
-//				newFSeal.getHabitat());
-//
-//		String result = this.mock
-//				.perform(request(HttpMethod.PUT, "/FSeal/updateFSeal/?id=" + this.TEST_FSeal_FROM_DB.getId())
-//						.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-//						.content(this.mapper.writeValueAsString(newFSeal)))
-//				.andExpect(status().isAccepted()).andReturn().getResponse().getContentAsString();
-//
-//		assertEquals(this.mapper.writeValueAsString(this.mapToDTO(updatedFSeal)), result);
-//	}
+	@Test
+	void testDeleteFSeal() throws Exception {
+		this.mock.perform(request(HttpMethod.DELETE, "/FSeal/delete/" + this.TEST_FSEAL_FROM_DB.getId()))
+				.andExpect(status().isNoContent());
+	}
+
+	@Test
+	void testReadAllFSeals() throws Exception {
+		List<FSealDTO> FSealList = new ArrayList<>();
+		FSealList.add(this.mapToDTO(TEST_FSEAL_FROM_DB));
+
+		String content = this.mock.perform(request(HttpMethod.GET, "/fseal/readAll").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+
+		assertEquals(this.mapper.writeValueAsString(FSealList), content);
+	}
+
+	@Test
+	void testUpdateFSeal() throws Exception {
+		FSealDTO newFSeal = new FSealDTO(null, "Sauvage", 250D);
+		FSealDomain updatedFSeal = new FSealDomain(this.TEST_FSEAL_FROM_DB.getId(), newFSeal.getName(), newFSeal.getWeight());
+
+		String result = this.mock
+				.perform(request(HttpMethod.PUT, "/fseal/update/" + this.TEST_FSEAL_FROM_DB.getId())
+						.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+						.content(this.mapper.writeValueAsString(newFSeal)))
+				.andExpect(status().isAccepted()).andReturn().getResponse().getContentAsString();
+
+		assertEquals(this.mapper.writeValueAsString(this.mapToDTO(updatedFSeal)), result);
+	}
 
 }

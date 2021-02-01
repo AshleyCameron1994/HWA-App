@@ -25,7 +25,7 @@ import com.qa.persistence.dto.MSealDTO;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:test-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:data-test.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 class MSealControllerIntegrationTest {
 
 	@Autowired

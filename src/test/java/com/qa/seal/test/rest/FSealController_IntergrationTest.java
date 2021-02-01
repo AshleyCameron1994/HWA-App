@@ -27,7 +27,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.persistence.domain.FSealDomain;
 import com.qa.persistence.dto.FSealDTO;
-import com.qa.persistence.dto.MSealDTO;
 
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)

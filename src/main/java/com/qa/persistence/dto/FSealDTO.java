@@ -1,5 +1,8 @@
 package com.qa.persistence.dto;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
 public class FSealDTO {
 	
 	private Long Id;
@@ -8,6 +11,7 @@ public class FSealDTO {
 	
 	private Double weight;
 
+	
 	public FSealDTO() {
 		super();
 	}

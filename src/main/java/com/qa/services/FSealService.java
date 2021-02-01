@@ -51,7 +51,6 @@ public class FSealService {
 	public FSealDTO update(Long id, FSealDomain fseal) {
 		FSealDomain updatedFSeal = this.repo.findById(id).orElseThrow();
 		MyBeanUtils.mergeNotNull(fseal, updatedFSeal);
-		
 		return this.maptoDTO(this.repo.save(updatedFSeal));
 	}
 	

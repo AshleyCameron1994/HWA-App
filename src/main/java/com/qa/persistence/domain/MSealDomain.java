@@ -43,6 +43,19 @@ public class MSealDomain {
 		this.fsealList = fsealList;
 	}
 
+	public MSealDomain(Long id, String name, Double weight) {
+		super();
+		Id = id;
+		this.name = name;
+		this.weight = weight;
+	}
+
+	public MSealDomain(String name, Double weight) {
+		super();
+		this.name = name;
+		this.weight = weight;
+	}
+
 	public Long getId() {
 		return Id;
 	}

@@ -26,13 +26,20 @@ public class MSealDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-//
-//	public MSealDTO(Long id, String name, Double weight) {
-//		super();
-//		Id = id;
-//		this.name = name;
-//		this.weight = weight;
-//	}
+
+	public MSealDTO(Long id, String name, Double weight) {
+		super();
+		Id = id;
+		this.name = name;
+		this.weight = weight;
+	}
+	
+
+	public MSealDTO(String name, Double weight) {
+		super();
+		this.name = name;
+		this.weight = weight;
+	}
 
 	public Long getId() {
 		return Id;
